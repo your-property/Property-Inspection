@@ -2,6 +2,29 @@
    Property Inspection — script.js
    ============================================ */
 
+/* ── LOADING SCREEN ── */
+(function() {
+  var loader = document.getElementById('loader');
+  if (!loader) return;
+
+  function dismiss() {
+    loader.classList.add('hidden');
+    // Remove from DOM after fade completes
+    setTimeout(function() { loader.remove(); }, 550);
+  }
+
+  // Dismiss when page is fully loaded (fonts, images, etc.)
+  if (document.readyState === 'complete') {
+    setTimeout(dismiss, 600);
+  } else {
+    window.addEventListener('load', function() {
+      setTimeout(dismiss, 400);
+    });
+    // Fallback: dismiss after 3.5s no matter what
+    setTimeout(dismiss, 3500);
+  }
+})();
+
 var EJ_KEY  = '_yAz4PMpNoZOAzlbu';
 var EJ_SVC  = 'service_9ouz7yj';
 var EJ_TPL  = 'template_n1sh6jm';
